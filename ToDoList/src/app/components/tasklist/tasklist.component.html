@@ -1,0 +1,5 @@
+<mat-selection-list [multiple]="true">
+  <mat-list-option *ngFor="let tarefa of tarefas" [selected]="tarefa.concluida">
+    {{ tarefa.descricao }}
+  </mat-list-option>
+</mat-selection-list>

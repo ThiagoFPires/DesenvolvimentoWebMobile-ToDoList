@@ -1,0 +1,14 @@
+.card {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  text-align: center;
+  background-color: rgb(213, 191, 22);
+}
+
+.input-tarefa {
+  width: 100%;
+  margin-bottom: 10px;
+}

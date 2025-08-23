@@ -1,0 +1,17 @@
+<div class="card">
+  <h2>Minha ToDo List</h2>
+  <p>Adicione suas tarefas aqui:</p>
+
+  <mat-form-field appearance="fill" class="input-tarefa">
+    <mat-label>Nova Tarefa</mat-label>
+    <input matInput [(ngModel)]="novaTarefa">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="adicionarTarefa()">
+    Adicionar
+  </button>
+
+  <app-tasklist></app-tasklist>
+
+  <app-footer-action-bar></app-footer-action-bar>
+</div>
