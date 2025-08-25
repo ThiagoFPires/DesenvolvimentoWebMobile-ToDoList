@@ -1,4 +1,5 @@
 <div class="footer-actions">
-  <button mat-stroked-button color="primary">Concluídas</button>
-  <button mat-stroked-button color="warn">Remover</button>
+  <button mat-stroked-button color="warn" class="botao-padrao" (click)="clickLimparLista()">Limpar Lista</button>
+  <button mat-stroked-button color="accent" class="botao-padrao" (click)="clickLimparConcluidas()">Limpar Concluídos</button>
+  <button mat-stroked-button color="primary" class="botao-padrao" (click)="clickSalvar()">Salvar</button>
 </div>

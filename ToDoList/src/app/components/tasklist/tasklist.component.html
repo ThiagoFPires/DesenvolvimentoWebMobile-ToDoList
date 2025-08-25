@@ -1,5 +1,7 @@
-<mat-selection-list [multiple]="true">
-  <mat-list-option *ngFor="let tarefa of tarefas" [selected]="tarefa.concluida">
-    {{ tarefa.descricao }}
-  </mat-list-option>
-</mat-selection-list>
+<div class="tasklist-container">
+  <div *ngFor="let tarefa of listaInterna" class="task-item">
+    <mat-checkbox [(ngModel)]="tarefa.concluida" (change)="toggleConcluida(tarefa.id)">
+      {{ tarefa.nome }}
+    </mat-checkbox>
+  </div>
+</div>

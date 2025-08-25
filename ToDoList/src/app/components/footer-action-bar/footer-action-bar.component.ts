@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-footer-action-bar',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './footer-action-bar.component.html',
-  styleUrl: './footer-action-bar.component.css'
+  styleUrls: ['./footer-action-bar.component.css']
 })
 export class FooterActionBarComponent {
+  // Evento emitido para o componente pai
+  @Output() limparListaEvent = new EventEmitter<void>();
+  @Output() limparConcluidasEvent = new EventEmitter<void>();
+  @Output() salvarEvent = new EventEmitter<void>();
 
+  clickLimparLista() {
+    console.log('Botão Limpar Lista clicado no footer');
+    this.limparListaEvent.emit();
+  }
+
+  clickLimparConcluidas() {
+    console.log('Botão Limpar Concluídas clicado no footer');
+    this.limparConcluidasEvent.emit();
+  }
+
+  clickSalvar() {
+    console.log('Botão Salvar clicado no footer');
+    this.salvarEvent.emit();
+  }
 }

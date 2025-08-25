@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>Minha ToDo List</h2>
+  <h2>Lista de Tarefas</h2>
   <p>Adicione suas tarefas aqui:</p>
 
   <mat-form-field appearance="fill" class="input-tarefa">
@@ -11,7 +11,17 @@
     Adicionar
   </button>
 
-  <app-tasklist></app-tasklist>
+  <!-- Componente filho com template variable -->
+  <app-tasklist
+    #tasklistRef
+    (toggleConcluidaEvent)="toggleConcluida($event)"
+    (removerTarefaEvent)="removerTarefa($event)">
+  </app-tasklist>
 
-  <app-footer-action-bar></app-footer-action-bar>
+  <!-- Footer emitindo eventos -->
+  <app-footer-action-bar
+    (limparListaEvent)="limparLista()"
+    (limparConcluidasEvent)="limparConcluidas()"
+    (salvarEvent)="salvar()">
+  </app-footer-action-bar>
 </div>

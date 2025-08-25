@@ -1,0 +1,29 @@
+.tasklist-container {
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  margin: 4px 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+mat-checkbox {
+  margin-right: 12px; /* espaço entre checkbox e texto */
+}
+
+.tarefa-texto {
+  flex: 1; /* ocupa o espaço entre checkbox e botão */
+  font-size: 16px;
+  word-break: break-word;
+}
+
+button mat-icon {
+  font-size: 20px;
+}
