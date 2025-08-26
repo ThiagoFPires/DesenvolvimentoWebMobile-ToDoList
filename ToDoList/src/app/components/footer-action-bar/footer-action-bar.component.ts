@@ -10,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./footer-action-bar.component.css']
 })
 export class FooterActionBarComponent {
-  // Evento emitido para o componente pai
   @Output() limparListaEvent = new EventEmitter<void>();
   @Output() limparConcluidasEvent = new EventEmitter<void>();
   @Output() salvarEvent = new EventEmitter<void>();

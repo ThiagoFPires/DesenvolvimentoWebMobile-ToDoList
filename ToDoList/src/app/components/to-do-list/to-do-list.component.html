@@ -11,14 +11,12 @@
     Adicionar
   </button>
 
-  <!-- Componente filho com template variable -->
   <app-tasklist
     #tasklistRef
     (toggleConcluidaEvent)="toggleConcluida($event)"
     (removerTarefaEvent)="removerTarefa($event)">
   </app-tasklist>
 
-  <!-- Footer emitindo eventos -->
   <app-footer-action-bar
     (limparListaEvent)="limparLista()"
     (limparConcluidasEvent)="limparConcluidas()"

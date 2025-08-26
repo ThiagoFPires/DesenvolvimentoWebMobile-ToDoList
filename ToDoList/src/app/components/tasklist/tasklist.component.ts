@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -12,28 +12,58 @@ import { Tarefa } from '../../../type';
   templateUrl: './tasklist.component.html',
   styleUrls: ['./tasklist.component.css']
 })
-export class TasklistComponent {
+export class TasklistComponent implements OnInit {
   listaInterna: Tarefa[] = [];
 
   @Output() toggleConcluidaEvent = new EventEmitter<number>();
   @Output() removerTarefaEvent = new EventEmitter<number>();
 
+  ngOnInit(): void {
+    const listaSalva = localStorage.getItem('tarefas');
+    if (listaSalva) {
+      this.listaInterna = JSON.parse(listaSalva);
+    }
+  }
+
   logTarefas(tarefas: Tarefa[]) {
-    this.listaInterna = [...tarefas];
-    console.log('Lista recebida no filho:', this.listaInterna);
+    tarefas.forEach(nova => {
+      const existe = this.listaInterna.find(t => t.id === nova.id);
+      if (!existe) {
+        this.listaInterna.push({ ...nova, concluida: false });
+      }
+    });
+    this.salvarNoLocalStorage();
+    console.log('Lista atualizada no filho:', this.listaInterna);
   }
 
   toggleConcluida(id: number) {
-    this.toggleConcluidaEvent.emit(id);
+    const tarefa = this.listaInterna.find(t => t.id === id);
+    if (tarefa) {
+      tarefa.concluida = !tarefa.concluida;
+      this.salvarNoLocalStorage();
+      this.toggleConcluidaEvent.emit(id);
+    }
   }
 
   removerTarefa(id: number) {
+    this.listaInterna = this.listaInterna.filter(t => t.id !== id);
+    this.salvarNoLocalStorage();
     this.removerTarefaEvent.emit(id);
   }
 
-  // Função para limpar a lista
   limparLista() {
     console.log('Lista limpa no componente filho');
     this.listaInterna = [];
+    localStorage.removeItem('tarefas');
+  }
+
+  onCheckboxChange(tarefa: Tarefa) {
+    tarefa.concluida = !tarefa.concluida;
+    this.salvarNoLocalStorage();
+    this.toggleConcluidaEvent.emit(tarefa.id);
+  }
+
+  private salvarNoLocalStorage() {
+    localStorage.setItem('tarefas', JSON.stringify(this.listaInterna));
   }
 }

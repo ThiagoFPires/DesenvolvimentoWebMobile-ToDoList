@@ -58,7 +58,6 @@ export class ToDoListComponent {
     this.atualizarFilho();
   }
 
-  // Atualiza o filho
   private atualizarFilho() {
     if (this.tasklist) this.tasklist.logTarefas(this.tarefas);
   }
@@ -70,7 +69,6 @@ export class ToDoListComponent {
   }
 
 
-  // Evento do footer: limpar apenas concluídas
   limparConcluidas() {
     console.log('Evento recebido do footer: limpar concluídas');
     this.tarefas = this.tarefas.filter(t => !t.concluida);

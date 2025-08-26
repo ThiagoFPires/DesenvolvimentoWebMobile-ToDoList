@@ -1,7 +1,14 @@
 <div class="tasklist-container">
   <div *ngFor="let tarefa of listaInterna" class="task-item">
-    <mat-checkbox [(ngModel)]="tarefa.concluida" (change)="toggleConcluida(tarefa.id)">
-      {{ tarefa.nome }}
+    <mat-checkbox
+      class="tarefa-checkbox"
+      [checked]="tarefa.concluida"
+      (change)="onCheckboxChange(tarefa)"
+      disableRipple>
     </mat-checkbox>
+
+    <span class="tarefa-texto" [class.concluida]="tarefa.concluida">
+      {{ tarefa.nome }}
+    </span>
   </div>
 </div>
