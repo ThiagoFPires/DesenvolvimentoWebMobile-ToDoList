@@ -57,6 +57,12 @@ export class TasklistComponent implements OnInit {
     localStorage.removeItem('tarefas');
   }
 
+  limparConcluidas() {
+    console.log('Limpando apenas as tarefas concluídas');
+    this.listaInterna = this.listaInterna.filter(t => !t.concluida);
+    this.salvarNoLocalStorage();
+  }
+
   onCheckboxChange(tarefa: Tarefa) {
     tarefa.concluida = !tarefa.concluida;
     this.salvarNoLocalStorage();

@@ -71,9 +71,9 @@ export class ToDoListComponent {
 
   limparConcluidas() {
     console.log('Evento recebido do footer: limpar concluídas');
-    this.tarefas = this.tarefas.filter(t => !t.concluida);
-    if (this.tasklist) this.tasklist.logTarefas(this.tarefas);
+    if (this.tasklist) this.tasklist.limparConcluidas();
   }
+
 
   salvar() {
     console.log('Lista salva:', this.tarefas);
